@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import include, url
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    url('admin/', include(admin.site.urls)),
+    url('bookmark/$', BookmarkLV.as_view(), name='index'),
+    url('bookmark/(?P<pk>\d+)/$', BookmarkDV.as_view(), name='detail'),
 ]

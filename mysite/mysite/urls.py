@@ -13,12 +13,13 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+#from django.contrib import admin
 from django.contrib import admin
-from django.urls import path
 from django.conf.urls import include, url
+from bookmark.views import BookmarkLV, BookmarkDV
 
 urlpatterns = [
-    url('admin/', include(admin.site.urls)),
+    url('admin/', admin.site.urls),
     url('bookmark/$', BookmarkLV.as_view(), name='index'),
     url('bookmark/(?P<pk>\d+)/$', BookmarkDV.as_view(), name='detail'),
 ]
